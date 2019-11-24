@@ -1,0 +1,17 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs
+/Identity + Organization/angular-WebApp/.vs
+/Identity + Organization/APIResource/obj
+/Identity + Organization + Authorization/.vs/InOutIntegrationSample
+/Identity + Organization + Authorization/angular-WebApp/.vs
+/Identity + Organization + Authorization/APIResource/obj
+/Identity + Organization + Authorization/APIResource/Logs
+/Identity + Organization + Authorization/APIResource/Dockerfile1.original
+/Identity + Organization + Authorization/APIResource/Dockerfile.original
+/IdentityOnly/.vs/InOutIntegrationSample
+/IdentityOnly/angular-WebApp/.vs
+/IdentityOnly/APIResource/obj
+/Identity + Organization/.vs/InOutIntegrationSample

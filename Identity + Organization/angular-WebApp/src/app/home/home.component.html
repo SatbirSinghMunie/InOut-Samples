@@ -1,0 +1,38 @@
+
+
+<button *ngIf="!name" (click)="login()">
+    Login
+</button>
+<div *ngIf="name">
+    <button (click)="logoff()">
+        Logout
+    </button>
+
+    <button (click)="getUserInfo()">
+        Get User Info
+    </button>
+
+    <h3>
+        Hello, {{name}}
+    </h3>
+
+    <div>
+        <div *ngFor="let claim of userInfo">
+            {{claim.key}} - {{claim.value}}
+        </div>
+    </div>
+</div>
+<br/><br/>
+<button (click)="getPublicData()">
+    Get Public Data
+</button>
+<button (click)="getPrivateData()">
+    Get Private Data
+</button>
+<br/><br/>
+<button (click)="chooseOrganization()">
+    Select Organization
+</button>
+<button (click)="getPaxcomData()">
+    Get Paxcom Data
+</button>
