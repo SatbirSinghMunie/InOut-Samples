@@ -10,14 +10,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using APIResource.Infrastructure.Services;
-using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.DependencyInjection.Extensions;
-using APIResource.Infrastructure.Policies;
-using Microsoft.AspNetCore.Authentication;
+using PaxcomAuth;
+using PaxcomAuth.Models;
 
-namespace APIResource
+namespace WebAPI
 {
     public class Startup
     {
@@ -45,27 +41,12 @@ namespace APIResource
                     .AllowCredentials());
             });
 
-            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-                .AddJwtBearer(options =>
-                {
-                    options.Authority = Configuration["IdentityAuthority"];
-                    options.RequireHttpsMetadata = Convert.ToBoolean(Configuration["IdentityRequiresHttps"]);
-                    options.Audience = Configuration["WMS_IdentityScope"];
-                });
-
-            services.AddActivityAuthorization();
-
-            services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-            services.AddTransient<IHttpRequestHelper, HttpRequestHelper>();
-            services.AddTransient<IIdentityService, IdentityService>();
-            services.AddTransient<IClaimsTransformation, ClaimsExtender>();
+            services.AddPaxcomAuthorization(GetPaxcomAuth_Configurations());
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env,
-                          ILoggerFactory loggerFactory)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-            loggerFactory.AddFile("Logs/myapp-{Date}.txt");
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -80,8 +61,28 @@ namespace APIResource
 
             app.UseAuthentication();
 
-            //app.UseHttpsRedirection();
+            app.UseHttpsRedirection();
             app.UseMvc();
+        }
+
+        private PaxcomAuth_Configurations GetPaxcomAuth_Configurations()
+        {
+            List<string> applicationActivities = new List<string>();
+            applicationActivities.Add("View Paxcom Data");
+
+            return new PaxcomAuth_Configurations()
+            {
+                ApplicationActivities = applicationActivities,
+                ApplicationId = 1000,
+                Application_IdentityScope = "sapp",
+                AuthorizationServer = "https://qainoutauthapi.azurewebsites.net/",
+                Auth_IdentityScope = "authorization",
+                IdentityAuthority = "https://qainoutidentity.azurewebsites.net/",
+                IdentityClientId = "api",
+                IdentityClientSecret = "secret",
+                IdentityRequiresHttps = false,      //keep this true for production
+                ORGM_IdentityScope = "organization"
+            };
         }
     }
 }

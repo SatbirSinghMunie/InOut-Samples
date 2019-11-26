@@ -6,6 +6,6 @@ by editing this MSBuild file. In order to learn more about this please visit htt
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
-    <_PublishTargetUrl>C:\My Directory\Projects\InOut Sample App\Identity + Organization + Authorization\APIResource\bin\Debug\netcoreapp2.2\publish\</_PublishTargetUrl>
+    <_PublishTargetUrl>C:\Users\SSingh\Desktop\Auth with PaxcomAuth Library\WebAPI\WebAPI\bin\Release\netcoreapp2.2\publish\</_PublishTargetUrl>
   </PropertyGroup>
 </Project>

@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { OAuthService, JwksValidationHandler, AuthConfig } from 'angular-oauth2-oidc';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -22,10 +21,10 @@ export class AppComponent implements OnInit {
     sessionChecksEnabled: true,					//Set to true of want to implement single signout
     sessionCheckIntervall: 5000,				//Milliseconds after which application checks whether user has been logged out or not 
     requireHttps: false,						//Keep this true for production
-    // showDebugInformation: false,					//Keep this false for production
+    showDebugInformation: true,					//Keep this false for production
   }
   
-  constructor(private oauthService: OAuthService,private _router: Router) {
+  constructor(private oauthService: OAuthService) {
     this.oauthService.configure(this.authConfig);
     this.oauthService.tokenValidationHandler = new JwksValidationHandler();
 

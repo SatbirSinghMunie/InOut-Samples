@@ -24,7 +24,7 @@ namespace APIResource.Controllers
         [Authorize]
         public ActionResult<IEnumerable<string>> Get(int id)
         {
-            return new string[] { "Private Data 1", "Private Data 2" };
+            return new string[] { "Protected Data 1", "Protected Data 2" };
         }
 
         // POST api/values

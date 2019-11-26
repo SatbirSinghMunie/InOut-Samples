@@ -46,7 +46,7 @@ export class HomeComponent implements OnInit {
       alert(JSON.stringify(res));
     },
     error => {
-      alert(error.statusText);
+      alert(error.status);
     });
   }
 
@@ -68,7 +68,7 @@ export class HomeComponent implements OnInit {
     });
   }
   
-  getPaxcomData(){
+  getOrganizationData(){
     this.httpClient.get<any>(inoutConstants.apiBaseUrl + "api/values/paxcom/2").subscribe(res => {
       alert(JSON.stringify(res));
     },
@@ -79,12 +79,5 @@ export class HomeComponent implements OnInit {
 
   chooseOrganization(){
     location.href = inoutConstants.organizationUrl;
-  }
-
-  getAuthActivities(){
-    let userEmail = this.userInfo.filter(x=> x["key"] == "preferred_username")[0]["value"];
-    return this.httpClient.get<any>(inoutConstants.apiBaseUrl + "api/users/auth-activities?userEmail=" + userEmail).subscribe(res =>{
-      alert(JSON.stringify(res));
-    });
   }
 }

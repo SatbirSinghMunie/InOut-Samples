@@ -6,8 +6,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { OAuthModule, OAuthStorage } from 'angular-oauth2-oidc';
 import { HomeComponent } from './home/home.component';
-import { OrganizationInterceptor } from './organization-interceptor';
 import { RedirectComponent } from './redirect/redirect.component';
+import { OrganizationInterceptor } from './organization-interceptor';
 import { CookieService } from 'ngx-cookie-service';
 import { inoutConstants } from './inout-constants';
 

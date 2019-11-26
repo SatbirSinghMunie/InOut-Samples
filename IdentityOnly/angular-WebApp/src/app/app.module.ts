@@ -22,7 +22,7 @@ export function storageFactory() : OAuthStorage {
     AppRoutingModule,
     HttpClientModule,
     OAuthModule.forRoot({resourceServer: {
-      allowedUrls: ['http://localhost:5200'],
+      allowedUrls: ['http://paxcomtestclientapi.azurewebsites.net'],
       sendAccessToken: true
     }
     })

@@ -32,7 +32,7 @@ export class HomeComponent implements OnInit {
 
   public userInfo:[];
 
-  private apiBaseUrl : string = "http://localhost:5200/";
+  private apiBaseUrl : string = "http://paxcomtestclientapi.azurewebsites.net/";
 
   getPublicData(){
     this.httpClient.get<any>(this.apiBaseUrl + "api/values").subscribe(res => {

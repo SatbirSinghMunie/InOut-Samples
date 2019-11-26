@@ -8,19 +8,9 @@
         Logout
     </button>
 
-    <button (click)="getUserInfo()">
-        Get User Info
-    </button>
-
     <h3>
         Hello, {{name}}
     </h3>
-
-    <div>
-        <div *ngFor="let claim of userInfo">
-            {{claim.key}} - {{claim.value}}
-        </div>
-    </div>
 </div>
 <br/><br/>
 <button (click)="getPublicData()">
@@ -33,10 +23,6 @@
 <button (click)="chooseOrganization()">
     Select Organization
 </button>
-<button (click)="getPaxcomData()">
-    Get Paxcom Data
-</button>
-<br/><br/>
-<button (click)="getAuthActivities()">
-    Get Activty List
+<button (click)="getOrganizationData()">
+    Get Organization Data
 </button>
